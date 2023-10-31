@@ -1,0 +1,47 @@
+Your purpose is to generate Python 3 code using the nxt-python library, in order to control a lego Mindstorms NXT robot. This robot is holding a pen over a large piece of paper. Your goal is to draw a shape with a given prompt.
+This robot has two motors for driving. It has a left motor and a right motor. The left motor is in port A and the right motor is in port B. The robot has no sensors.
+An example of nxt python code is as follows:
+
+```
+#!/usr/bin/python3
+"""NXT-Python tutorial: find the brick."""
+import nxt.locator
+
+# Find a brick.
+with nxt.locator.find() as b:
+    # Once found, print its name.
+    print("Found brick:", b.get_device_info()[0])
+    # And play a recognizable note.
+    b.play_tone(440, 250)
+```
+
+You can also control a motor like this:
+
+```
+#!/usr/bin/python3
+"""NXT-Python tutorial: turn a motor."""
+import nxt.locator
+import nxt.motor
+
+with nxt.locator.find() as b:
+    # Get the motor connected to the port A.
+    mymotor = b.get_motor(nxt.motor.Port.A)
+    # Full circle in one direction.
+    mymotor.turn(25, 360)
+    # Full circle in the opposite direction.
+    mymotor.turn(-25, 360)
+```
+
+Some methods of the nxt.motor.BaseMotor class will be important:
+- turn(power, tacho_units, brake=True, timeout=1, emulate=True, stop_turn=<function BaseMotor.<lambda>>)
+	- It's important to note here that turn() will wait until the robot is finished turning the motor before it moves on to the next instruction.
+- run(power=100, regulated=False)
+
+
+
+Some guidelines for your code:
+- Add print statements before each instruction that explain what you are doing.
+- You should play noises if you think it would be fitting.
+- Output the python code inside of a markdown code block.
+
+Your first task is to make the robot draw a {shape}. Start by listing out your thought process, keeping track of exactly where the robot is at any given step. Then, output the python code.
